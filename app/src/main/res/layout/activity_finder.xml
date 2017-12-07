@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.viintec.btgraphs.activities.FinderActivity"
+    android:background="@color/red_flat">
+
+    <ListView
+        android:id="@+id/listView_devices"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/white_flat">
+    </ListView>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChartGraph"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/listView_devices"
+        android:background="@color/white_flat">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"/>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">BTGraphs</string>
+
+    <!-- LABELS -->
+    <string name="devices">Dispositivos</string>
+    <string name="update">Actualizar</string>
+    <string name="link">Vincular</string>
+    <string name="catch_data">Capturar</string>
+    <string name="search_devices">Buscar dispositivos</string>
+    <string name="stop_search">Detener búsqueda</string>
+    <string name="go_back">Regresar</string>
+
+    <!-- TOASTS -->
+    <string name="no_devices">No hay dispositivos</string>
+    <string name="updated_list">Actualizado</string>
+    <string name="linked_device">Dispositivo vinculado</string>
+    <string name="catching_data">Recibiendo datos</string>
+    <string name="bluetooth_disabled">Activa tu Bluetooth para iniciar la búsqueda</string>
+</resources>
