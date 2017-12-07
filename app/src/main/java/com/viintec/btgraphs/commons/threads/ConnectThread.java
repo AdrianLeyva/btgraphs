@@ -41,7 +41,7 @@ public class ConnectThread extends Thread {
         mmDataList = dataList;
         mActivity = activity;
         // Get a BluetoothSocket to connect with the given BluetoothDevice
-        try {
+       /* try {
             // MY_UUID is the app's UUID string, also used by the server code
             try{
                 if(Build.VERSION.SDK_INT >= 17){
@@ -70,19 +70,20 @@ public class ConnectThread extends Thread {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        /*try {
+        try {
             tmp = device.getOriginalDevice()
                     .createInsecureRfcommSocketToServiceRecord(
                             BTManager.DEFAULT_UUID
                     );
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
         mmSocket = tmp;
     }
 
+    @Override
     public void run() {
         // Cancel discovery because it will slow down the connection
         mmAdapter.cancelDiscovery();
@@ -104,7 +105,7 @@ public class ConnectThread extends Thread {
             }
         }
         // Do work to manage the connection (in a separate thread)
-        new ManageConnectThread(mmSocket, mmDataList, mActivity).run();
+        new ManageConnectThread(mmSocket, mmDataList, mActivity).start();
     }
 
     /** Will cancel an in-progress connection, and close the socket */

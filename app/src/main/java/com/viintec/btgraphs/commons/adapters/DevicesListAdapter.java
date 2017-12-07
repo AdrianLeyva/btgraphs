@@ -71,7 +71,7 @@ public class DevicesListAdapter extends ArrayAdapter<BTDevice> {
         buttonCatchData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                connectThread.run();
+                connectThread.start();
             }
         });
 

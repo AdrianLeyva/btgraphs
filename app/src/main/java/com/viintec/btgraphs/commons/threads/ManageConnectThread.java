@@ -46,6 +46,7 @@ public class ManageConnectThread extends Thread{
         mmOutStream = tmpOut;
     }
 
+     @Override
     public void run() {
         Log.e(BaseActivity.TAG, "IN ManageConnectThread");
         boolean flag = false;
@@ -53,14 +54,10 @@ public class ManageConnectThread extends Thread{
         int valueY = 1;
         byte[] buffer = new byte[256];  // buffer store for the stream
         int bytes; // bytes returned from read()
-        int counter = 0;
 
         // Keep listening to the InputStream until an exception occurs
         while (true) {
             try {
-               /* if(counter == 5)
-                    throw new IOException();
-                */
                 Log.e(BaseActivity.TAG, "INSIDE");
                 // Read from the InputStream
                 bytes = mmInStream.read(buffer);
@@ -76,7 +73,6 @@ public class ManageConnectThread extends Thread{
                     mmDataList.add(new DataGraph(valueX, String.valueOf(valueY)));
                     valueY++;
                     Log.e(BaseActivity.TAG, "INCOMING DATA: " + valueX);
-                    //counter++;
                     mActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -84,15 +80,18 @@ public class ManageConnectThread extends Thread{
                         }
                     });
                 }
-                // Send the obtained bytes to the UI activity
-                //mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
-                //        .sendToTarget();
             } catch (IOException e) {
                 e.printStackTrace();
                 break;
             }
         }
-    }
+
+         try {
+             mmSocket.close();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+     }
 
     /* Call this from the main activity to send data to the remote device */
     public void write(byte[] bytes) {

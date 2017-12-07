@@ -119,6 +119,8 @@ public class FinderActivity extends BaseActivity {
 
     public void updateChart(){
         Log.e(TAG, "DATALIST SIZE: " + dataList.size());
+
+        entries.clear();
         if(!dataList.isEmpty()){
             for(DataGraph data : dataList){
                 entries.add(
@@ -131,6 +133,7 @@ public class FinderActivity extends BaseActivity {
             LineData lineData = new LineData(dataSet);
 
             mLineChart.setData(lineData);
+            mLineChart.animate();
             mLineChart.invalidate();
         }
     }
