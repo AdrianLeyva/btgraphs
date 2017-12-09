@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.viintec.btgraphs.R;
 import com.viintec.btgraphs.commons.Util;
+import com.viintec.btgraphs.presentation.finder.FinderActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

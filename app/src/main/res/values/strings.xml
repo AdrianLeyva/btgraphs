@@ -7,8 +7,11 @@
     <string name="link">Vincular</string>
     <string name="catch_data">Capturar</string>
     <string name="search_devices">Buscar dispositivos</string>
-    <string name="stop_search">Detener búsqueda</string>
+    <string name="stop_catch">Detener captura</string>
     <string name="go_back">Regresar</string>
+    <string name="select_device">Seleccionar</string>
+    <string name="data_default">Default</string>
+    <string name="data_custom">Custom</string>
 
     <!-- TOASTS -->
     <string name="no_devices">No hay dispositivos</string>

@@ -20,7 +20,7 @@
         android:textAlignment="center"/>
 
     <Button
-        android:id="@+id/button_catchData"
+        android:id="@+id/button_selectDevice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".2"
@@ -28,7 +28,7 @@
         android:background="@drawable/button_catch_data"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="@string/catch_data"
+        android:text="@string/select_device"
         android:textAllCaps="false"
         android:textColor="@color/white_flat"
         android:textSize="10sp"/>
