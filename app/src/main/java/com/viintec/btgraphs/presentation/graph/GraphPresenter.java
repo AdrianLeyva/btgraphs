@@ -23,6 +23,7 @@ public class GraphPresenter extends BasePresenter<GraphContract.View> implements
     private BluetoothHandler mBTHandler;
     private ArrayList<DataGraph> dataList;
     private ArrayList<Entry> entries;
+    private boolean isTryingAgain;
 
     public GraphPresenter(GraphContract.View mView, Context context, BluetoothDevice bluetoothDevice,
                           ArrayList<DataGraph> dataList, ArrayList<Entry> entries) {
@@ -34,15 +35,22 @@ public class GraphPresenter extends BasePresenter<GraphContract.View> implements
     }
 
     @Override
-    public void receiveDataFromBluetooth(final String typOfIncomingData) {
-        mView.setProgressIndicator(true);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                mBTHandler.connectSocket();
-                mBTHandler.readIncomingData(typOfIncomingData);
-            }
-        }).start();
+    public void receiveDataFromBluetooth(final String typeOfIncomingData) {
+        if(isTryingAgain){
+            mView.throwOnResume();
+        }
+        else{
+            mView.setProgressIndicator(true);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    mBTHandler.connectSocket();
+                    mBTHandler.readIncomingData(typeOfIncomingData);
+                }
+            }).start();
+            isTryingAgain = true;
+        }
+
     }
 
     @Override
@@ -54,10 +62,6 @@ public class GraphPresenter extends BasePresenter<GraphContract.View> implements
                 mBTHandler.closeSocket();
             }
         }).start();
-    }
-
-    @Override
-    public void graphsIncomingData() {
 
     }
 
@@ -89,4 +93,5 @@ public class GraphPresenter extends BasePresenter<GraphContract.View> implements
     public void setInvisibleProgressBar() {
         mView.setProgressIndicator(false);
     }
+
 }

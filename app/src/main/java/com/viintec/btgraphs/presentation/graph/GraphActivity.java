@@ -57,11 +57,8 @@ public class GraphActivity extends BaseActivity implements GraphContract.View {
     }
 
     @Override
-    public void updateLineChart(LineData lineData) {
-        entries.clear();
-        mLineChart.setData(lineData);
-        mLineChart.invalidate();
-        mLineChart.notifyDataSetChanged();
+    public void throwOnResume() {
+        recreate();
     }
 
     @Override
@@ -85,16 +82,7 @@ public class GraphActivity extends BaseActivity implements GraphContract.View {
         mButtonCatchData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isReceivingData){
-                    mActionsListener.stopIncomingData();
-                    mButtonCatchData.setText(getString(R.string.catch_data));
-                    isReceivingData = false;
-                }
-                else {
-                    mActionsListener.receiveDataFromBluetooth(getTypeOfIncomingData());
-                    mButtonCatchData.setText(getString(R.string.stop_catch));
-                    isReceivingData = true;
-                }
+                receiveIncomingData();
             }
         });
     }
@@ -127,4 +115,17 @@ public class GraphActivity extends BaseActivity implements GraphContract.View {
         else
             return DATA_DEFAULT;
     }
+
+    private void receiveIncomingData(){
+        if(isReceivingData){
+            mActionsListener.stopIncomingData();
+            mButtonCatchData.setText(getString(R.string.refresh));
+            isReceivingData = false;
+        }
+        else {
+            mActionsListener.receiveDataFromBluetooth(getTypeOfIncomingData());
+            mButtonCatchData.setText(getString(R.string.stop_catch));
+            isReceivingData = true;        }
+    }
+
 }

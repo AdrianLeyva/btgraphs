@@ -12,6 +12,8 @@
     <string name="select_device">Seleccionar</string>
     <string name="data_default">Default</string>
     <string name="data_custom">Custom</string>
+    <string name="no_paired_devices">No hay dispositivos emparejados</string>
+    <string name="refresh">Refrescar</string>
 
     <!-- TOASTS -->
     <string name="no_devices">No hay dispositivos</string>
@@ -19,4 +21,6 @@
     <string name="linked_device">Dispositivo vinculado</string>
     <string name="catching_data">Recibiendo datos</string>
     <string name="bluetooth_disabled">Activa tu Bluetooth para iniciar la búsqueda</string>
+    <string name="bluetooth_dont_supported">El dispositivo no soporta bluetooth</string>
+    <string name="bluetooth_request_cancelled">Es necesario activar el bluetooth antes de continuar</string>
 </resources>

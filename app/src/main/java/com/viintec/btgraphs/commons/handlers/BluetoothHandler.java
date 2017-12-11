@@ -44,28 +44,27 @@ public class BluetoothHandler {
     }
 
     public void connectSocket(){
-        mBluetoothAdapter.cancelDiscovery();
-        try {
-            GraphPresenter graphPresenter = (GraphPresenter) mBasePresenter;
-            mBluetoothSocket.connect();
-            setInvisibleProgressBarInUI();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(!mBluetoothSocket.isConnected()){
+            mBluetoothAdapter.cancelDiscovery();
+            try {
+                mBluetoothSocket.connect();
+                setInvisibleProgressBarInUI();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void closeSocket(){
         try {
-            GraphPresenter graphPresenter = (GraphPresenter) mBasePresenter;
             mBluetoothSocket.close();
             setInvisibleProgressBarInUI();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void readIncomingData(String typeOfIncomingData){
-        GraphPresenter graphPresenter = (GraphPresenter) mBasePresenter;
         InputStream inputStream = getInputStream();
         String valueX;
         int valueY = 1;
@@ -83,11 +82,10 @@ public class BluetoothHandler {
 
                 dataList.add(new DataGraph(valueX, String.valueOf(valueY)));
                 valueY++;
-                updateLineChartInUI();
                 Log.e(BaseActivity.TAG, "INCOMING DATA: " + valueX);
+                updateLineChartInUI();
             } catch (IOException e) {
                 e.printStackTrace();
-                closeSocket();
             }
         }
     }
@@ -109,7 +107,6 @@ public class BluetoothHandler {
             mBluetoothSocket = mBluetoothDevice.createInsecureRfcommSocketToServiceRecord(DEFAULT_UUID);
         } catch (IOException e){
             e.printStackTrace();
-            mBluetoothSocket = null;
         }
     }
 
