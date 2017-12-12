@@ -12,14 +12,17 @@ it incoming data represents the temperature that is gotten by a
 temperature sensor.  
 
 ## Example  
-* Choice a device 
-![Device](https://i.imgur.com/y2RtiQ5.jpg) 
+### Choice a device 
+![Device](https://i.imgur.com/y2RtiQ5.jpg)  
 
-* Start
-![Start](https://i.imgur.com/x7WwTxP.jpg) 
 
-* Catch data 
-![Catch data](https://i.imgur.com/lbhS193.jpg) 
+### Start
+![Start](https://i.imgur.com/x7WwTxP.jpg)  
+
+
+### Catch data 
+![Catch data](https://i.imgur.com/lbhS193.jpg)  
+
 
 
 
